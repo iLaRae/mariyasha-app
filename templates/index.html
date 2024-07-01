@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Flask App</title>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='DivaGUI.png') }}" alt="Diva GUI">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form action="/greet" method="POST">
+        <input type="text" name="name_input" placeholder="Enter your name">
+        <input type="submit" value="Greet me">
+    </form>
+</body>
+</html>
